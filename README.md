@@ -42,6 +42,12 @@ Upon launching the application for the first time, you can log in with the defau
 
 Once logged in, you can create new investment plans, add cryptocurrencies to them, and view their simulated performance.
 
+## Application Preview
+
+Here is a short video demonstrating the application's features. Click the gif to watch the original video in 60 fps.
+
+[![Tokero App Demo](https://andreiivan.com/tokero-preview.gif)](https://andreiivan.com/tokero.mp4)
+
 ## Database
 
 The application utilizes one local SQLite database, with three tables:
