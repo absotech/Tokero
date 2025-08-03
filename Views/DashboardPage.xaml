@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tokero.Views.DashboardPage"
+             xmlns:converters="clr-namespace:Tokero.Converters"
+             Title="Dashboard">
+    <ContentPage.Resources>
+        <converters:RoiToColorConverter x:Key="RoiToColorConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Label Text="Crypto Investment Dashboard"
+                   FontSize="28"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,30" />
+            <Grid RowDefinitions="Auto,Auto,Auto"
+                  ColumnDefinitions="*,*"
+                  RowSpacing="15"
+                  ColumnSpacing="15"
+                  Margin="0,0,0,30">
+                <Frame Grid.Row="0"
+                       Grid.ColumnSpan="2"
+                       BackgroundColor="LightBlue"
+                       Padding="20"
+                       HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Total Invested"
+                               FontSize="14"
+                               TextColor="Gray" />
+                        <Label Text="{Binding TotalInvested, StringFormat='€{0:N2}'}"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="DarkBlue" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1"
+                       Grid.Column="0"
+                       BackgroundColor="LightGreen"
+                       Padding="15"
+                       HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Portfolio Value"
+                               FontSize="12"
+                               TextColor="Gray" />
+                        <Label Text="{Binding CurrentValue, StringFormat='€{0:N2}'}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="DarkGreen" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1"
+                       Grid.Column="1"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#2c2c2c}"
+                       Padding="15"
+                       HasShadow="True">
+                    <StackLayout>
+                        <Label Text="ROI"
+                               FontSize="12"
+                               TextColor="Gray" />
+                        <Label Text="{Binding OverallRoi, StringFormat='{0:F2}%'}"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{Binding OverallRoi, Converter={StaticResource RoiToColorConverter}}" />
+                    </StackLayout>
+                </Frame>
+
+            </Grid>
+            <StackLayout Spacing="15">
+                <Button Text="📊 View Portfolio"
+                        Command="{Binding ViewPortfolioCommand}"
+                        BackgroundColor="#2E86AB"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Text="➕ Create Investment Plan"
+                        Command="{Binding CreateInvestmentPlanCommand}"
+                        BackgroundColor="#F18F01"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Text="🔄 Refresh Data"
+                        Command="{Binding RefreshDataCommand}"
+                        BackgroundColor="#A23B72"
+                        TextColor="White"
+                        HeightRequest="50" />
+
+                <Button Text="Logout"
+                        Command="{Binding LogoutCommand}"
+                        BackgroundColor="#C73E1D"
+                        TextColor="White"
+                        Margin="0,20,0,0" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
